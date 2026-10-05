@@ -1,3 +1,4 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
 import {
   Alert,
@@ -91,8 +92,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Lock Tile Demo</Text>
-      <Text style={styles.subtitle}>Adds a custom Android Quick Settings tile.</Text>
+      <View style={styles.iconWrap}>
+        <MaterialIcons name="screen-lock-portrait" size={96} color="#60a5fa" />
+      </View>
+      <Text style={styles.title}>Screen Lock</Text>
+      <Text style={styles.subtitle}>Custom Android Quick Settings tile and screen lock helper.</Text>
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Status</Text>
         <Text style={styles.status}>{status}</Text>
@@ -121,6 +125,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 24,
+  },
+  iconWrap: {
+    width: 110,
+    height: 110,
+    borderRadius: 26,
+    backgroundColor: '#111827',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 16,
   },
   title: {
     color: '#ffffff',

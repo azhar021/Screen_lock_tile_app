@@ -1,8 +1,9 @@
 {
-  "name": "lock_screen_tile_app",
+  "name": "screen-lock",
   "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {
+    "@expo/vector-icons": "^15.1.1",
     "expo": "~57.0.26",
     "expo-status-bar": "~57.0.1",
     "react": "19.2.3",

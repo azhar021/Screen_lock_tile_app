@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Lock_screen_tile_app",
-    "slug": "Lock_screen_tile_app",
+    "name": "Screen Lock",
+    "slug": "screen-lock",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,7 +17,7 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.Lock_screen_tile_app"
+      "package": "com.anonymous.screen_lock"
     },
     "web": {
       "favicon": "./assets/favicon.png"
