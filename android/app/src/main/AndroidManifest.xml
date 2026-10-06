@@ -23,7 +23,7 @@
       </intent-filter>
       <meta-data android:name="android.app.device_admin" android:resource="@xml/device_admin_receiver"/>
     </receiver>
-    <service android:name=".LockTileService" android:label="Screen Lock" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" android:exported="true">
+    <service android:name=".LockTileService" android:label="Screen Lock" android:icon="@drawable/ic_lock" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" android:exported="true">
       <intent-filter>
         <action android:name="android.service.quicksettings.action.QS_TILE"/>
       </intent-filter>
