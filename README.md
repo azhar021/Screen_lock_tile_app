@@ -19,7 +19,7 @@ The app is built with **Expo + React Native** and uses a native Android `Accessi
 
 Download the latest APK from the GitHub Releases page:
 
-**[Download the latest APK](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY/releases)**
+**[Download the latest APK](https://github.com//azhar021/Screen_lock_tile_app/releases)**
 
 The release page will be updated whenever a new version is published.
 
