@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">Screen Lock</string>
+  <string name="accessibility_service_description">Allows the Screen Lock Quick Settings tile to lock your screen. This service only performs the system lock action and does not read your screen content.</string>
 </resources>

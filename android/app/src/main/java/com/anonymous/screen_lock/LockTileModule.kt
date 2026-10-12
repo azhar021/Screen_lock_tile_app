@@ -23,10 +23,8 @@ class LockTileModule(private val reactContext: ReactApplicationContext) :
             }
 
             val map = Arguments.createMap().apply {
-                putBoolean("isDeviceOwner", false)
-                putBoolean("isAdminActive", false)
                 putBoolean("canLock", isAccessibilityEnabled)
-                putBoolean("supportsGoToSleep", true)
+                putBoolean("isAccessibilityEnabled", isAccessibilityEnabled)
                 putString("summary", summary)
             }
             promise.resolve(map)
@@ -36,16 +34,20 @@ class LockTileModule(private val reactContext: ReactApplicationContext) :
     }
 
     @ReactMethod
-    fun openDeviceAdminSettings(promise: Promise) {
+    fun openAccessibilitySettings(promise: Promise) {
         try {
             val activity = reactContext.currentActivity ?: run {
                 promise.reject("OPEN_ACCESSIBILITY_SETTINGS_FAILED", "No active Android activity was found.")
                 return
             }
             ScreenLockAccessibilityService.openAccessibilitySettings(activity)
-            promise.resolve("Opened Android accessibility settings.")
+            promise.resolve("Opened Android Accessibility settings.")
         } catch (e: Exception) {
-            promise.reject("OPEN_ACCESSIBILITY_SETTINGS_FAILED", e.message ?: "Unable to open Android accessibility settings.", e)
+            promise.reject(
+                "OPEN_ACCESSIBILITY_SETTINGS_FAILED",
+                e.message ?: "Unable to open Android Accessibility settings.",
+                e,
+            )
         }
     }
 

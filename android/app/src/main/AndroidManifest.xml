@@ -17,12 +17,6 @@
     <meta-data android:name="expo.modules.updates.ENABLE_BSDIFF_PATCH_SUPPORT" android:value="true"/>
     <meta-data android:name="expo.modules.updates.EXPO_UPDATES_CHECK_ON_LAUNCH" android:value="ALWAYS"/>
     <meta-data android:name="expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS" android:value="0"/>
-    <receiver android:name=".LockDeviceAdminReceiver" android:permission="android.permission.BIND_DEVICE_ADMIN" android:exported="true">
-      <intent-filter>
-        <action android:name="android.app.action.DEVICE_ADMIN_ENABLED"/>
-      </intent-filter>
-      <meta-data android:name="android.app.device_admin" android:resource="@xml/device_admin_receiver"/>
-    </receiver>
     <service android:name=".ScreenLockAccessibilityService" android:exported="true" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
       <intent-filter>
         <action android:name="android.accessibilityservice.AccessibilityService"/>

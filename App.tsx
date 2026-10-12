@@ -13,17 +13,15 @@ import {
 } from 'react-native';
 
 type SupportStatus = {
-  isDeviceOwner: boolean;
-  isAdminActive: boolean;
   canLock: boolean;
-  supportsGoToSleep: boolean;
+  isAccessibilityEnabled: boolean;
   summary: string;
 };
 
 const { LockTileModule } = NativeModules as {
   LockTileModule?: {
     lockDevice: () => Promise<string>;
-    openDeviceAdminSettings: () => Promise<string>;
+    openAccessibilitySettings: () => Promise<string>;
     getSupportStatus: () => Promise<SupportStatus>;
   };
 };
@@ -44,7 +42,7 @@ export default function App() {
   const [checkFailed, setCheckFailed] = useState(false);
 
   const unavailable = ENV_UNAVAILABLE ?? (checkFailed ? 'Support check failed' : null);
-  const ready = !!support && (support.canLock || support.isAdminActive || support.isDeviceOwner);
+  const ready = !!support?.canLock;
 
   useEffect(() => {
     const loadStatus = async () => {
@@ -70,16 +68,19 @@ export default function App() {
     return () => sub.remove();
   }, []);
 
-  const handleEnableAdmin = async () => {
+  const handleEnableAccessibility = async () => {
     if (Platform.OS !== 'android' || !LockTileModule) {
       Alert.alert(MISSING_MODULE_TITLE, MISSING_MODULE_BODY);
       return;
     }
 
     try {
-      await LockTileModule.openDeviceAdminSettings();
+      await LockTileModule.openAccessibilitySettings();
     } catch (error: any) {
-      Alert.alert('Admin settings failed', error?.message ?? 'Unable to open Android admin settings.');
+      Alert.alert(
+        'Accessibility settings failed',
+        error?.message ?? 'Unable to open Android Accessibility settings.',
+      );
     }
   };
 
@@ -89,18 +90,22 @@ export default function App() {
       return;
     }
     if (!ready) {
-      handleEnableAdmin();
+      handleEnableAccessibility();
       return;
     }
 
     try {
       await LockTileModule.lockDevice();
     } catch (error: any) {
-      Alert.alert('Lock failed', error?.message ?? 'Enable device-admin access, then try again.');
+      Alert.alert(
+        'Lock failed',
+        error?.message ?? 'Enable the Screen Lock accessibility service, then try again.',
+      );
     }
   };
 
-  const statusText = unavailable ?? (support ? (ready ? 'Ready to lock' : 'Device admin required') : 'Checking…');
+  const statusText =
+    unavailable ?? (support ? (ready ? 'Ready to lock' : 'Accessibility required') : 'Checking…');
 
   return (
     <View style={styles.container}>
@@ -117,7 +122,7 @@ export default function App() {
       <Pressable
         onPress={handleLock}
         accessibilityRole="button"
-        accessibilityLabel={ready ? 'Lock screen now' : 'Enable device admin'}
+        accessibilityLabel={ready ? 'Lock screen now' : 'Enable accessibility service'}
         style={({ pressed }) => [
           styles.lockButton,
           !ready && styles.lockButtonIdle,
@@ -127,10 +132,17 @@ export default function App() {
         <MaterialIcons name={ready ? 'lock' : 'lock-open'} size={72} color={ready ? '#1c1917' : '#d6d3d1'} />
       </Pressable>
 
-      <Text style={styles.hint}>{ready ? 'Tap to lock now' : 'Tap to enable device admin'}</Text>
+      <Text style={styles.hint}>
+        {ready ? 'Tap to lock now' : 'Tap to open Accessibility settings'}
+      </Text>
 
       <View style={styles.steps}>
-        <Step done={ready} index={1} text="Allow device admin access" onPress={ready ? undefined : handleEnableAdmin} />
+        <Step
+          done={ready}
+          index={1}
+          text="Enable Screen Lock in Accessibility"
+          onPress={ready ? undefined : handleEnableAccessibility}
+        />
         <Step index={2} text="Open Quick Settings and tap the edit pencil" />
         <Step index={3} text="Add the “Screen Lock” tile" />
       </View>
