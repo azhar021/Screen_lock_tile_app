@@ -10,11 +10,11 @@ The app is built with **Expo + React Native** and uses a native Android `Accessi
 
 <!-- Add screenshots later. Suggested layout: app home, Quick Settings tile. -->
 
-| App home | Quick Settings tile |
-| --- | --- |
-| ![App home screenshot](docs/screenshots/app-home.png) | ![Quick Settings tile screenshot](docs/screenshots/quick-settings-tile.png) |
+| App home | Enable Screen Lock | Quick Settings tile | Screen Lock tile |
+| --- | --- | --- | --- |
+| <img src="docs/screenshots/app-home-accessibility.jpg" width="230" /> | <img src="docs/screenshots/app-home-accessibility-allowed.jpg" width="220" /> | <img src="docs/screenshots/quick-settings-tile.jpg" width="200" /> | <img src="docs/screenshots/quick-settings-tile-focus.png" width="220" /> |
 
-> Place your images at `docs/screenshots/app-home.png` and `docs/screenshots/quick-settings-tile.png` (or update the paths above).
+<!-- > Place your images at `docs/screenshots/app-home.png` and `docs/screenshots/quick-settings-tile.png` (or update the paths above). -->
 
 ## Features
 
