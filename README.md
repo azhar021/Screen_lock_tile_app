@@ -6,6 +6,16 @@ The app is built with **Expo + React Native** and uses a native Android `Accessi
 
 > **Android only.** iOS is not supported.
 
+## Screenshots
+
+<!-- Add screenshots later. Suggested layout: app home, Quick Settings tile. -->
+
+| App home | Quick Settings tile |
+| --- | --- |
+| ![App home screenshot](docs/screenshots/app-home.png) | ![Quick Settings tile screenshot](docs/screenshots/quick-settings-tile.png) |
+
+> Place your images at `docs/screenshots/app-home.png` and `docs/screenshots/quick-settings-tile.png` (or update the paths above).
+
 ## Features
 
 - 🔒 Lock the device from the app
@@ -175,6 +185,8 @@ android/app/build/outputs/apk/release/app-release.apk
 ├── App.tsx
 ├── app.json
 ├── assets/
+├── docs/
+│   └── screenshots/          # Add screenshots here
 ├── android/
 │   └── app/
 │       └── src/
